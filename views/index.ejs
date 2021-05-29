@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="split container-form">
+            <div class="title">
+                <h1>NodeJs - Opencv</h1>
+
+                <h3>Convert your image using opencv</h3>
+                <p> In this app, opencv python project executed in Nodejs server.</p>
+            </div>
+            <div class="form-data">
+                <form action="/" method="post" onsubmit="btn()" enctype="multipart/form-data">
+                    <div class="button-wrapper">
+                    <span class="label">
+                        Upload File
+                      </span>
+                    <input type="file" name="avatar" id="upload" required>
+                </div>
+                <div class="select">
+                    <select class="" name="secenekler" id="processVal" onchange="hide(this.value);">
+                        <option selected value="1">Gray Conversion</option>
+                        <option value="2">Noise Removal</option>
+                        <option value="3">Erosion</option>
+                        <option value="4">Dilation</option>
+                        <option value="5">Brightness & Contrast</option>
+                        <option value="6">Histogram Equalization</option>
+                    </select>
+                </div>
+                    <div id="visible" class="box">
+                        <label for="brightness">Brightness</label><span id="brightnessValue"></span>
+                        <input  type="range" min="-255" max="255" value="0" name="brightness" id="brightness">
+                        <label for="contrast">Contrast</label><span id="contrastValue"></span>
+                        <input  type="range" min="-127" max="127" value="0" name="contrast" id="contrast">
+                    </div>
+
+                    <button type="submit" id="btn">Submit</button>
+
+                </form>
+
+            </div>
+        </div>
+        <div class="split container-result">
+            <div class="result">
+                <h3>
+                    <%= diagnosis %>
+                </h3>
+
+
+                <div class="images">
+                    <%if (images.length==0) { %>
+                        <img src="loading.gif" alt="loading">
+                        <%} else {%>
+                            <% images.forEach(img=> { %>
+                                <img id="imgs" src="images/<%=img%>" alt="image">
+                                <div class="download-button">
+                                    <a href="images/<%=img%>" download>Download</a>
+                                </div>
+                                <!-- <div class="clear-button">
+                                    <a href="" >Clear</a>
+                                </div> -->
+                                <% })}; %>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+    
+
+</body>
+
+
+
+</html>
