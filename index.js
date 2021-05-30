@@ -13,6 +13,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
+const dirUploads = path.join(__dirname, 'uploads');
+if (!fs.existsSync(dirUploads)){
+    fs.mkdirSync(dirUploads);
+}
+const dirImages = path.join(__dirname, 'public/images');
+if (!fs.existsSync(dirImages)){
+    fs.mkdirSync(dirImages);
+}
+
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads');
